@@ -2,26 +2,8 @@
   <app-header [invoice]="invoice"></app-header>
 
   <main class="flex-1 px-10 pt-32 sm:pt-24">
-    <table class="w-full overflow-hidden rounded-xl">
-      <thead class="bg-black text-beige">
-        <th class="p-2">ID</th>
-        <th class="p-2">Product</th>
-        <th class="p-2">Quantity</th>
-        <th class="p-2">Price</th>
-      </thead>
-      <tbody>
-        @for (item of invoice.items; track $index) {
-          <tr [ngClass]="{ 'bg-gray': $index % 2 !== 0 }">
-            <td class="py-2 text-center">{{ item.id }}</td>
-            <td class="py-2 text-center font-medium">
-              {{ item.product }}
-            </td>
-            <td class="py-2 text-center">{{ item.quantity }}</td>
-            <td class="py-2 text-center">{{ item.price }}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    <app-table [columns]="columns" [data]="invoice.items"></app-table>
+
     <div class="mt-10 h-[1px] w-full bg-black"></div>
     <p class="mt-1 pr-4 text-right font-extrabold text-black">TOTAL</p>
   </main>

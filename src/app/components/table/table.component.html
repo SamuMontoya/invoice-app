@@ -1,0 +1,17 @@
+<table class="w-full overflow-hidden rounded-xl">
+  <thead class="bg-black text-beige">
+    @for (column of columns; track $index) {
+      <th class="p-2">{{ column.label }}</th>
+    }
+  </thead>
+
+  <tbody>
+    @for (item of data; track $index) {
+      <tr [ngClass]="{ 'bg-gray': $index % 2 !== 0 }">
+        @for (column of columns; track $index) {
+          <td class="py-2 text-center">{{ item[column.accessoryKey] }}</td>
+        }
+      </tr>
+    }
+  </tbody>
+</table>
