@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from '../../services';
 import { Invoice } from '../../models';
-import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-invoice',
   standalone: true,
-  imports: [MatIconModule, CommonModule],
+  imports: [CommonModule, FooterComponent, HeaderComponent],
   templateUrl: './invoice.component.html',
 })
 export class InvoiceComponent implements OnInit {

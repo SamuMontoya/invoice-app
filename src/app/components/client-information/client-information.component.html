@@ -1,0 +1,15 @@
+<section
+  class="absolute left-1/2 top-28 flex w-2/3 -translate-x-1/2 flex-col justify-between rounded-r-3xl rounded-bl-3xl bg-yellow p-4 px-8 text-black sm:top-32 sm:flex-row"
+>
+  <app-info-with-icon
+    [icon]="'person'"
+    [boldText]="client.name"
+    [complementText]="client.lastName"
+  ></app-info-with-icon>
+
+  <app-info-with-icon
+    [icon]="'location_on'"
+    [boldText]="client.address.country + ', ' + client.address.city"
+    [complementText]="client.address.street + ' - ' + client.address.number"
+  ></app-info-with-icon>
+</section>
