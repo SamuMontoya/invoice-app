@@ -1,7 +1,7 @@
 <body class="flex h-full w-full flex-col bg-beige">
   <app-header [invoice]="invoice" (onAddItemEmitter)="onOpenForm()" />
 
-  <main class="flex flex-1 items-center justify-center pt-[15%]">
+  <main class="flex flex-1 items-center justify-center pt-[15%] sm:pt-8">
     <app-table
       class="w-full px-10"
       [columns]="columns"
