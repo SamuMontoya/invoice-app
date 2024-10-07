@@ -1,6 +1,15 @@
 <header class="flex-0 relative rounded-b-3xl bg-black p-10 pb-20 text-beige">
   <p>Invoice # {{ invoice.id }}</p>
-  <h1 class="text-2xl font-extrabold sm:text-4xl">{{ invoice.name }}</h1>
+  <div class="flex justify-between">
+    <h1 class="text-2xl font-extrabold sm:text-4xl">{{ invoice.name }}</h1>
+    <button
+      (click)="onAddItem()"
+      class="absolute right-4 top-4 flex h-fit w-fit items-center rounded-full border border-beige px-3 py-1 text-sm hover:border-yellow hover:text-yellow sm:right-8 sm:top-8"
+    >
+      <mat-icon>add</mat-icon>
+      <p class="pl-1">Add Item</p>
+    </button>
+  </div>
 
   <app-client-information [client]="invoice.client"></app-client-information>
 </header>

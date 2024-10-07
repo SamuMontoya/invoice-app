@@ -1,8 +1,9 @@
 <body class="flex h-full w-full flex-col bg-beige">
-  <app-header [invoice]="invoice" />
+  <app-header [invoice]="invoice" (onAddItemEmitter)="onOpenForm()" />
 
   <main class="flex flex-1 items-center justify-center">
     <app-table
+      class="w-full px-10"
       [columns]="columns"
       [data]="invoice.items"
       (removeEmitter)="onRemove($event)"
@@ -14,11 +15,22 @@
 </body>
 
 <app-modal
-  [isVisible]="isModalVisible"
+  [isVisible]="isDeleteModalVisible"
   [title]="'Delete item'"
   [id]="idToDelete"
   [description]="'Are you sure you want to delete this item?'"
   [action]="'Delete'"
-  (closeEmitter)="onClose()"
+  (closeEmitter)="onCloseDelete()"
   (actionEmitter)="onDelete($event)"
 />
+
+<app-modal
+  [isVisible]="isFormVisible"
+  [title]="'Create item'"
+  [description]="'Complete the fields to create a item.'"
+  [action]="'Create'"
+  (closeEmitter)="onCloseForm()"
+  (actionEmitter)="onCreate()"
+>
+  <app-form (onCreateEmitter)="onCreate()"></app-form>
+</app-modal>
