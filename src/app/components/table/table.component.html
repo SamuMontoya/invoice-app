@@ -1,27 +1,45 @@
-<table class="w-full overflow-hidden rounded-xl">
-  <thead class="bg-black text-beige">
-    @for (column of columns; track $index) {
-      <th class="p-2">{{ column.label }}</th>
-    }
-  </thead>
+@if (data.length > 0) {
+  <table class="w-full overflow-hidden rounded-xl">
+    <thead class="bg-black text-beige">
+      @for (column of columns; track $index) {
+        <th class="p-2">{{ column.label }}</th>
+      }
+    </thead>
 
-  <tbody>
-    @for (item of data; track $index) {
-      <tr [ngClass]="{ 'bg-gray': $index % 2 !== 0 }">
-        @for (column of columns; track $index) {
-          @if (column.accessoryKey === "delete") {
-            <td class="flex justify-center py-2">
-              <button (click)="onRemove(item.id)">
-                <mat-icon class="text-orange hover:text-red-700"
-                  >delete</mat-icon
-                >
-              </button>
-            </td>
-          } @else {
-            <td class="py-2 text-center">{{ item[column.accessoryKey] }}</td>
+    <tbody>
+      @for (item of data; track $index) {
+        <tr [ngClass]="{ 'bg-gray': $index % 2 !== 0 }">
+          @for (column of columns; track $index) {
+            @if (column.accessoryKey === "delete") {
+              <td class="flex justify-center py-2">
+                <button (click)="onRemove(item.id)">
+                  <mat-icon class="text-orange hover:text-red-700"
+                    >delete</mat-icon
+                  >
+                </button>
+              </td>
+            } @else {
+              <td class="py-2 text-center">
+                {{ item[column.accessoryKey] }}
+              </td>
+            }
           }
-        }
+        </tr>
+      }
+    </tbody>
+    <tfoot>
+      <tr class="bg-black text-beige">
+        <td
+          [attr.colspan]="columns.length - 2"
+          class="pr-2 text-right font-bold"
+        >
+          TOTAL
+        </td>
+        <td class="text-center">{{ total }}</td>
+        <td [attr.colspan]="1"></td>
       </tr>
-    }
-  </tbody>
-</table>
+    </tfoot>
+  </table>
+} @else {
+  <app-empty-data />
+}
