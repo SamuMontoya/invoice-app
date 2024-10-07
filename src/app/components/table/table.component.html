@@ -9,7 +9,17 @@
     @for (item of data; track $index) {
       <tr [ngClass]="{ 'bg-gray': $index % 2 !== 0 }">
         @for (column of columns; track $index) {
-          <td class="py-2 text-center">{{ item[column.accessoryKey] }}</td>
+          @if (column.accessoryKey === "delete") {
+            <td class="flex justify-center py-2">
+              <button (click)="onRemove(item.id)">
+                <mat-icon class="text-orange hover:text-red-700"
+                  >delete</mat-icon
+                >
+              </button>
+            </td>
+          } @else {
+            <td class="py-2 text-center">{{ item[column.accessoryKey] }}</td>
+          }
         }
       </tr>
     }

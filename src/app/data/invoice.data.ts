@@ -3,6 +3,7 @@ import { Invoice } from '../models';
 export const invoiceData: Invoice = {
   id: 1,
   name: 'Computer Components',
+  total: 0,
   client: {
     name: 'John Doe',
     lastName: 'Smith',

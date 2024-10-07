@@ -2,10 +2,27 @@
   <app-header [invoice]="invoice"></app-header>
 
   <main class="flex-1 px-10 pt-32 sm:pt-24">
-    <app-table [columns]="columns" [data]="invoice.items"></app-table>
+    <app-table
+      [columns]="columns"
+      [data]="invoice.items"
+      (removeEmitter)="onRemove($event)"
+    ></app-table>
+
+    <app-modal
+      [isVisible]="isModalVisible"
+      [title]="'Delete item'"
+      [id]="idToDelete"
+      [description]="'Are you sure you want to delete this item?'"
+      [action]="'Delete'"
+      (closeEmitter)="onClose()"
+      (actionEmitter)="onDelete($event)"
+    >
+    </app-modal>
 
     <div class="mt-10 h-[1px] w-full bg-black"></div>
-    <p class="mt-1 pr-4 text-right font-extrabold text-black">TOTAL</p>
+    <p class="mt-1 text-right font-extrabold text-black">
+      TOTAL: {{ invoice.total }}
+    </p>
   </main>
 
   <app-footer [company]="invoice.company"></app-footer>

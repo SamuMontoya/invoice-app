@@ -17,4 +17,8 @@ export const INVOICE_COLUMNS: Column[] = [
     accessoryKey: 'price',
     label: 'Price',
   },
+  {
+    accessoryKey: 'delete',
+    label: 'Delete',
+  },
 ];
