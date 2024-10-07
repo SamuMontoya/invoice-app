@@ -1,6 +1,8 @@
 <button
   class="rounded bg-yellow px-4 py-2 font-semibold text-black hover:bg-orange hover:text-beige"
+  [ngClass]="disabled ? 'cursor-not-allowed opacity-50' : ''"
   (click)="handleClick()"
+  disabled="disabled"
 >
   {{ text }}
 </button>

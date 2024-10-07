@@ -1,26 +1,79 @@
-<form>
-  <input
-    name="product"
-    type="text"
-    placeholder="Product"
-    class="mt-2 w-full rounded-md border border-gray p-2"
-    [(ngModel)]="item.product"
-  />
-  <input
-    name="price"
-    type="number"
-    placeholder="Price"
-    class="mt-2 w-full rounded-md border border-gray p-2"
-    [(ngModel)]="item.price"
-  />
-  <input
-    name="quantity"
-    type="number"
-    placeholder="Quantity"
-    class="mt-2 w-full rounded-md border border-gray p-2"
-    [(ngModel)]="item.quantity"
-  />
-  <div class="flex justify-end pt-4">
-    <app-button [text]="'Create'" (click)="onSubmit()"></app-button>
+<form (ngSubmit)="onSubmit()" #itemForm="ngForm" class="mt-4">
+  <div class="relative w-full">
+    <input
+      name="product"
+      type="text"
+      placeholder="Product"
+      class="mt-2 w-full rounded-md border border-gray p-2"
+      [(ngModel)]="item.product"
+      required
+      minlength="3"
+      #product="ngModel"
+    />
+    <div class="absolute w-full pt-1">
+      @if (product.invalid && (product.dirty || product.touched)) {
+        @if (product.errors!["required"]) {
+          <p class="text-xs text-orange">Product name is required</p>
+        }
+        @if (product.errors!["minlength"]) {
+          <p class="text-xs text-orange">
+            Product name must be at least 3 characters
+          </p>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="relative w-full">
+    <input
+      name="price"
+      type="number"
+      placeholder="Price"
+      class="mt-10 w-full rounded-md border border-gray p-2"
+      [(ngModel)]="item.price"
+      required
+      min="1"
+      #price="ngModel"
+    />
+    <div class="absolute w-full pt-1">
+      @if (price.invalid && (price.dirty || price.touched)) {
+        @if (price.errors!["required"]) {
+          <p class="text-xs text-orange">Product price is required</p>
+        }
+        @if (price.errors!["min"]) {
+          <p class="text-xs text-orange">Product price must be at least 1</p>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="relative w-full">
+    <input
+      name="quantity"
+      type="number"
+      placeholder="Quantity"
+      class="mt-10 w-full rounded-md border border-gray p-2"
+      [(ngModel)]="item.quantity"
+      required
+      min="1"
+      #quantity="ngModel"
+    />
+    <div class="absolute w-full pt-1">
+      @if (quantity.invalid && (quantity.dirty || quantity.touched)) {
+        @if (quantity.errors!["required"]) {
+          <p class="text-xs text-orange">Product quantity is required</p>
+        }
+        @if (quantity.errors!["min"]) {
+          <p class="text-xs text-orange">Product quantity must be at least 1</p>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="flex justify-end pt-8">
+    <app-button
+      [text]="'Create'"
+      [disabled]="itemForm.invalid ?? false"
+    ></app-button>
   </div>
 </form>
