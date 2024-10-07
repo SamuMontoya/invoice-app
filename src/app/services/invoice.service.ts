@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Invoice } from '../models';
+import { Invoice, Item } from '../models';
 import { invoiceData } from '../data';
 
 @Injectable({
@@ -17,9 +17,8 @@ export class InvoiceService {
     };
   }
 
-  createItem(product: string, price: number, quantity: number): Invoice {
-    const id = this.invoice.items.length + 1;
-    this.invoice.items.push({ id, product, price, quantity });
+  createItem(item: Item): Invoice {
+    this.invoice.items.push(item);
     return { ...this.invoice, total: this.getTotal() };
   }
 

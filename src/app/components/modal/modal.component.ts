@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, ButtonComponent],
   templateUrl: './modal.component.html',
 })
 export class ModalComponent {

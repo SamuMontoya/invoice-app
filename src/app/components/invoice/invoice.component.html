@@ -1,7 +1,7 @@
 <body class="flex h-full w-full flex-col bg-beige">
   <app-header [invoice]="invoice" (onAddItemEmitter)="onOpenForm()" />
 
-  <main class="flex flex-1 items-center justify-center">
+  <main class="flex flex-1 items-center justify-center pt-[15%]">
     <app-table
       class="w-full px-10"
       [columns]="columns"
@@ -28,9 +28,7 @@
   [isVisible]="isFormVisible"
   [title]="'Create item'"
   [description]="'Complete the fields to create a item.'"
-  [action]="'Create'"
   (closeEmitter)="onCloseForm()"
-  (actionEmitter)="onCreate()"
 >
-  <app-form (onCreateEmitter)="onCreate()"></app-form>
+  <app-form (createEmitter)="onCreate($event)"></app-form>
 </app-modal>

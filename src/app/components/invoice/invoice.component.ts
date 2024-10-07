@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { InvoiceService } from '../../services';
-import { Column, Invoice } from '../../models';
+import { Column, Invoice, Item } from '../../models';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
@@ -57,7 +57,8 @@ export class InvoiceComponent implements OnInit {
     this.isFormVisible = false;
   }
 
-  onCreate(): void {
+  onCreate(item: Item): void {
+    this.invoice = this.service.createItem(item);
     this.isFormVisible = false;
   }
 }

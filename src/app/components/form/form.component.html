@@ -1,23 +1,26 @@
-<form class="pb-5">
+<form>
   <input
     name="product"
     type="text"
     placeholder="Product"
     class="mt-2 w-full rounded-md border border-gray p-2"
-    [(ngModel)]="product"
+    [(ngModel)]="item.product"
   />
   <input
     name="price"
     type="number"
     placeholder="Price"
     class="mt-2 w-full rounded-md border border-gray p-2"
-    [(ngModel)]="price"
+    [(ngModel)]="item.price"
   />
   <input
     name="quantity"
     type="number"
     placeholder="Quantity"
     class="mt-2 w-full rounded-md border border-gray p-2"
-    [(ngModel)]="quantity"
+    [(ngModel)]="item.quantity"
   />
+  <div class="flex justify-end pt-4">
+    <app-button [text]="'Create'" (click)="onSubmit()"></app-button>
+  </div>
 </form>
